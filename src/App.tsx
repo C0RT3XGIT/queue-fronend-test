@@ -10,6 +10,7 @@ function App() {
   const MovieCreate = lazy(() => import("./pages/Movie/Create"));
   const Directors = lazy(() => import("./pages/Directors"));
   const DirectorDetailed = lazy(() => import("./pages/Director/Detailed"));
+  const DirectorCreate = lazy(() => import("./pages/Director/Create"));
 
   return (
     <BrowserRouter>
@@ -28,6 +29,7 @@ function App() {
           <Route path="directors" element={<Layout />}>
             <Route index element={<Directors />} />
             <Route path=":id" element={<DirectorDetailed />} />
+            <Route path="create" element={<DirectorCreate />} />
           </Route>
         </Routes>
       </Suspense>

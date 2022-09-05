@@ -4,6 +4,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Link, useNavigate } from "react-router-dom";
+import { styled } from "@mui/material";
 
 const pages = [
   {
@@ -15,6 +16,11 @@ const pages = [
     route: "/directors",
   },
 ];
+
+const StyledLink = styled(Link)({
+  textDecoration: "none",
+});
+
 const Navbar = () => {
   const navigate = useNavigate();
 
@@ -26,14 +32,12 @@ const Navbar = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
-            onClick={handleHeaderClick}
-          >
-            Queue Movies Project
-          </Typography>
+          <StyledLink to="/movies">
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              Queue Movies Project
+            </Typography>
+          </StyledLink>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
@@ -41,16 +45,19 @@ const Navbar = () => {
                 key={page.name}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <Link to={page.route} style={{ textDecoration: "none" }}>
-                  {page.name}
-                </Link>
+                <StyledLink to={page.route}>{page.name}</StyledLink>
               </Button>
             ))}
           </Box>
+          <Button
+            color="secondary"
+            variant="contained"
+            style={{ marginRight: 10 }}
+          >
+            <StyledLink to="/movies/create">New movie</StyledLink>
+          </Button>
           <Button color="success" variant="contained">
-            <Link to="/movies/create" style={{ textDecoration: "none" }}>
-              Add new movie
-            </Link>
+            <StyledLink to="/directors/create">New director</StyledLink>
           </Button>
         </Toolbar>
       </AppBar>

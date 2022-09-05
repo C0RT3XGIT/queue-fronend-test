@@ -1,18 +1,18 @@
-import MovieActionForm from "components/MovieActionForm";
+import DirectorActionForm from "components/DirectorActionForm";
 import Box from "@mui/material/Box";
-import { IMovie } from "types/movies";
-import { createMovie } from "api/movies";
+import { IDirector } from "types/movies";
+import { createDirector } from "api/directors";
 import SpinnerBackdrop from "components/SpinnerBackdrop";
 import { useState } from "react";
 
 const MovieCreate = () => {
   const [loading, setLoading] = useState(false);
 
-  const handleMovieCreate = (movieDetails: IMovie) => {
+  const handleDirectorCreate = (directorDetails: IDirector) => {
     setLoading(true);
-    createMovie(movieDetails)
+    createDirector(directorDetails)
       .then(() => {
-        alert("Movie Created");
+        alert("Director Created");
       })
       .finally(() => setLoading(false));
   };
@@ -22,7 +22,7 @@ const MovieCreate = () => {
   }
   return (
     <Box p={3}>
-      <MovieActionForm handleFormSubmit={handleMovieCreate} />
+      <DirectorActionForm handleFormSubmit={handleDirectorCreate} />
     </Box>
   );
 };

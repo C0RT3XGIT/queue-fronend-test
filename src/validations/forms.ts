@@ -9,6 +9,6 @@ export const movieActionSchema = yup.object().shape({
 });
 
 export const directorActionSchema = yup.object().shape({
-  first_name: yup.string().required("Email field is required!"),
-  last_name: yup.string().required("Password field is required!"),
+  first_name: yup.string().required("First name field is required!"),
+  last_name: yup.string().required("Last name field is required!"),
 });
