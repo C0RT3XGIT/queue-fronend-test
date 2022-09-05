@@ -3,7 +3,7 @@ import List from "@mui/material/List";
 import ListItem from "components/ListItem";
 import React, { useEffect, useState } from "react";
 import { IDirector } from "types/movies";
-import { getMovies } from "api/movies";
+import { getDirectors } from "api/directors";
 import SpinnerBackdrop from "components/SpinnerBackdrop";
 
 const Directors = () => {
@@ -12,7 +12,7 @@ const Directors = () => {
 
   useEffect(() => {
     setLoading(true);
-    getMovies()
+    getDirectors()
       .then(({ data }) => {
         setDirectors(data.directors);
       })
@@ -32,8 +32,7 @@ const Directors = () => {
               id={item._id}
               count={index + 1}
               key={item._id}
-              primaryText={item.first_name}
-              secondaryText={item.last_name}
+              primaryText={item.first_name + " " + item.last_name}
               detailsRoute="directors"
             />
           ))}

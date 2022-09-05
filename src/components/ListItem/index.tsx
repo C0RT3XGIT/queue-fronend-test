@@ -12,7 +12,7 @@ interface IMovieItemProps {
   id: string;
   count: number;
   primaryText: string;
-  secondaryText: string | number;
+  secondaryText?: string | number;
   detailsRoute: string;
 }
 
@@ -38,7 +38,7 @@ const ListItem = ({
         <ListItemText
           primary={primaryText}
           secondaryTypographyProps={{ component: "div" }}
-          secondary={`Release year: ${secondaryText}`}
+          secondary={secondaryText}
         />
 
         <Button variant="contained" onClick={() => handleDetailsClick(id)}>

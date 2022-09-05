@@ -8,6 +8,7 @@ function App() {
   const Movies = lazy(() => import("./pages/Movies"));
   const MovieDetailed = lazy(() => import("./pages/Movie/Detailed"));
   const MovieCreate = lazy(() => import("./pages/Movie/Create"));
+  const Directors = lazy(() => import("./pages/Directors"));
 
   return (
     <BrowserRouter>
@@ -22,6 +23,9 @@ function App() {
             <Route index element={<Movies />} />
             <Route path=":id" element={<MovieDetailed />} />
             <Route path="create" element={<MovieCreate />} />
+          </Route>
+          <Route path="directors" element={<Layout />}>
+            <Route index element={<Directors />} />
           </Route>
         </Routes>
       </Suspense>
