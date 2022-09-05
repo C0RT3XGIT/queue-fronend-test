@@ -17,8 +17,16 @@ export const getMovieDetails = (id: string) => {
 
 export const updateMovieDetails = (id: string, payload: IMovie) => {
   return request({
-    url: `/movie/${id}`,
+    url: `/movies/${id}`,
     method: "put",
+    data: payload,
+  });
+};
+
+export const createMovie = (payload: IMovie) => {
+  return request({
+    url: "/movies",
+    method: "post",
     data: payload,
   });
 };

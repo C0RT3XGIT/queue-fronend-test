@@ -24,7 +24,6 @@ const MovieActionForm = ({
   } = useForm<IMovie>({
     resolver: yupResolver(movieActionSchema),
   });
-  console.log(errors);
   return (
     <Box
       component="form"
