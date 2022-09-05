@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { styled } from "@mui/material";
 
 const pages = [
@@ -22,12 +22,6 @@ const StyledLink = styled(Link)({
 });
 
 const Navbar = () => {
-  const navigate = useNavigate();
-
-  const handleHeaderClick = () => {
-    navigate("/movies");
-  };
-
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -40,25 +34,31 @@ const Navbar = () => {
 
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
-                variant="outlined"
-                key={page.name}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                <StyledLink to={page.route}>{page.name}</StyledLink>
-              </Button>
+              <StyledLink to={page.route}>
+                <Button
+                  variant="outlined"
+                  key={page.name}
+                  sx={{ my: 2, color: "white", display: "block" }}
+                >
+                  {page.name}
+                </Button>
+              </StyledLink>
             ))}
           </Box>
-          <Button
-            color="secondary"
-            variant="contained"
-            style={{ marginRight: 10 }}
-          >
-            <StyledLink to="/movies/create">New movie</StyledLink>
-          </Button>
-          <Button color="success" variant="contained">
-            <StyledLink to="/directors/create">New director</StyledLink>
-          </Button>
+          <StyledLink to="/movies/create">
+            <Button
+              color="secondary"
+              variant="contained"
+              style={{ marginRight: 10 }}
+            >
+              New movie
+            </Button>
+          </StyledLink>
+          <StyledLink to="/directors/create">
+            <Button color="success" variant="contained">
+              New director
+            </Button>
+          </StyledLink>
         </Toolbar>
       </AppBar>
     </Box>
