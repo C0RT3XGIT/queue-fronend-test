@@ -30,10 +30,6 @@ const MovieActionForm = ({
       autoComplete="off"
       onSubmit={handleSubmit(handleFormSubmit)}
     >
-      <Typography variant="h5" pb={3}>
-        Movie Details
-      </Typography>
-
       <Grid container spacing={3}>
         <Grid item xs={12} sm={4}>
           <TextField
