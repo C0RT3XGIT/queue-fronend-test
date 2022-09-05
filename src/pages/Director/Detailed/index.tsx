@@ -4,10 +4,10 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { IDirector, IMovie, IMovieDetailed } from "types/movies";
-import { updateMovieDetails } from "api/movies";
+import { IDirector } from "types/movies";
+import { updateDirectorDetails, getDirectorDetails } from "api/directors";
 import SpinnerBackdrop from "components/SpinnerBackdrop";
-import { getDirectorDetails } from "api/directors";
+import DirectorActionForm from "components/DirectorActionForm";
 
 const DirectorDetailed = () => {
   const { id } = useParams();
@@ -15,10 +15,13 @@ const DirectorDetailed = () => {
   const [directorDetails, setDirectorDetails] = useState<IDirector>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleUpdateDirectorDetails = (data: IMovie) => {
-    updateMovieDetails(id, data).then(() => {
-      alert("Director details updated !");
-    });
+  const handleUpdateDirectorDetails = (data: IDirector) => {
+    setLoading(true);
+    updateDirectorDetails(id, data)
+      .then(() => {
+        alert("Director details updated !");
+      })
+      .finally(() => setLoading(false));
   };
 
   useEffect(() => {
@@ -50,6 +53,15 @@ const DirectorDetailed = () => {
             </Typography>
           </CardContent>
         </Card>
+      </Grid>
+      <Grid item xs={12} sm={10} my={2}>
+        <Typography variant="h5" py={3}>
+          Update Details
+        </Typography>
+        <DirectorActionForm
+          handleFormSubmit={handleUpdateDirectorDetails}
+          director={directorDetails}
+        />
       </Grid>
     </Grid>
   );

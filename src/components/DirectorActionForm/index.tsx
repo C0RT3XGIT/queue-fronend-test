@@ -2,26 +2,26 @@ import Box from "@mui/material/Box";
 import { Grid } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { IMovieDetailed, IMovie } from "types/movies";
+import { IDirector } from "types/movies";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup/dist/yup";
-import { movieActionSchema } from "validations/forms";
+import { directorActionSchema } from "validations/forms";
 
-interface IMovieActionFormProps {
-  movie?: IMovieDetailed;
-  handleFormSubmit: (data: IMovie) => void;
+interface IDirectorActionFormProps {
+  director?: IDirector;
+  handleFormSubmit: (data: IDirector) => void;
 }
 
-const MovieActionForm = ({
-  movie,
+const DirectorActionForm = ({
+  director,
   handleFormSubmit,
-}: IMovieActionFormProps) => {
+}: IDirectorActionFormProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IMovie>({
-    resolver: yupResolver(movieActionSchema),
+  } = useForm<IDirector>({
+    resolver: yupResolver(directorActionSchema),
   });
   return (
     <Box
@@ -32,24 +32,24 @@ const MovieActionForm = ({
       <Grid container spacing={3}>
         <Grid item xs={12} sm={4}>
           <TextField
-            error={!!errors.name}
-            id="name"
-            label="Name"
-            helperText={errors?.name?.message}
-            defaultValue={movie?.name}
+            error={!!errors.first_name}
+            id="first-name"
+            label="First Name"
+            helperText={errors?.first_name?.message}
+            defaultValue={director?.first_name}
             fullWidth
-            {...register("name")}
+            {...register("first_name")}
           />
         </Grid>
         <Grid item xs={12} sm={4}>
           <TextField
-            error={!!errors.release_year}
-            id="release-year"
-            label="Release Year"
-            helperText={errors?.release_year?.message}
+            error={!!errors.last_name}
+            id="last-name"
+            label="Last name"
+            helperText={errors?.last_name?.message}
             fullWidth
-            defaultValue={movie?.release_year}
-            {...register("release_year")}
+            defaultValue={director?.last_name}
+            {...register("last_name")}
           />
         </Grid>
       </Grid>
@@ -62,4 +62,4 @@ const MovieActionForm = ({
   );
 };
 
-export default MovieActionForm;
+export default DirectorActionForm;

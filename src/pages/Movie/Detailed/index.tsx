@@ -17,9 +17,12 @@ const MovieDetailed = () => {
   const [loading, setLoading] = useState(false);
 
   const handleUpdateMovieDetails = (data: IMovie) => {
-    updateMovieDetails(id, data).then(() => {
-      alert("Movie updated !");
-    });
+    setLoading(true);
+    updateMovieDetails(id, data)
+      .then(() => {
+        alert("Movie updated !");
+      })
+      .finally(() => setLoading(false));
   };
 
   useEffect(() => {
@@ -60,7 +63,7 @@ const MovieDetailed = () => {
       </Grid>
       <Grid item xs={12} sm={8} my={2}>
         <Typography variant="h5" py={3}>
-          Update Movie Details
+          Update Details
         </Typography>
         <MovieActionForm
           movie={movieDetails}
