@@ -39,7 +39,7 @@ const DirectorDetailed = () => {
 
   return (
     <Grid container spacing={3}>
-      <Grid item xs={12} sm={2} my={2}>
+      <Grid item xs={12} sm={5} my={2}>
         <Typography variant="h5" py={3}>
           Director Details
         </Typography>
@@ -54,7 +54,7 @@ const DirectorDetailed = () => {
           </CardContent>
         </Card>
       </Grid>
-      <Grid item xs={12} sm={10} my={2}>
+      <Grid item xs={12} sm={7} my={2}>
         <Typography variant="h5" py={3}>
           Update Details
         </Typography>
