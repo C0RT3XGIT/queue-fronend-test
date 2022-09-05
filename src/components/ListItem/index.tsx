@@ -3,45 +3,51 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Typography from "@mui/material/Typography";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
+import { ListItem as Item } from "@mui/material";
 import { IMovie } from "types/movies";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 
 interface IMovieItemProps {
+  id: string;
   count: number;
-  movie: IMovie;
+  primaryText: string;
+  secondaryText: string | number;
+  detailsRoute: string;
 }
 
-const MovieItem = ({ movie, count }: IMovieItemProps) => {
+const ListItem = ({
+  primaryText,
+  secondaryText,
+  count,
+  detailsRoute,
+  id,
+}: IMovieItemProps) => {
   const navigate = useNavigate();
 
   const handleDetailsClick = (id: string) => {
-    navigate(`/movies/${id}`);
+    navigate(`/${detailsRoute}/${id}`);
   };
 
   return (
     <>
-      <ListItem alignItems="flex-start">
+      <Item alignItems="flex-start">
         <ListItemAvatar>
           <Typography variant="h3">{count}</Typography>
         </ListItemAvatar>
         <ListItemText
-          primary={movie?.name}
+          primary={primaryText}
           secondaryTypographyProps={{ component: "div" }}
-          secondary={`Release year: ${movie?.release_year}`}
+          secondary={`Release year: ${secondaryText}`}
         />
 
-        <Button
-          variant="contained"
-          onClick={() => handleDetailsClick(movie._id)}
-        >
+        <Button variant="contained" onClick={() => handleDetailsClick(id)}>
           Details
         </Button>
-      </ListItem>
+      </Item>
       <Divider variant="inset" />
     </>
   );
 };
 
-export default MovieItem;
+export default ListItem;
