@@ -4,7 +4,6 @@ import Typography from "@mui/material/Typography";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import { ListItem as Item } from "@mui/material";
-import { IMovie } from "types/movies";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { getMovieDetails, updateMovieDetails } from "api/movies";
-import { IMovie, IMovieCreate, IMovieDetailed } from "types/movies";
+import { IMovieCreate, IMovieDetailed } from "types/movies";
 import SpinnerBackdrop from "components/SpinnerBackdrop";
 import MovieActionForm from "components/MovieActionForm";
 

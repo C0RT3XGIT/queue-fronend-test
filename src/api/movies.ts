@@ -1,5 +1,5 @@
 import request from "utils/request";
-import { IMovie, IMovieCreate } from "types/movies";
+import { IMovieCreate } from "types/movies";
 
 export const getMovies = () => {
   return request({
