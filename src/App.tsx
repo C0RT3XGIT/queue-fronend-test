@@ -6,7 +6,7 @@ function App() {
   const Layout = lazy(() => import("./layout"));
   const Error = lazy(() => import("./pages/Error"));
   const Movies = lazy(() => import("./pages/Movies"));
-  const MovieDetailed = lazy(() => import("./pages/MovieDetailed"));
+  const MovieDetailed = lazy(() => import("./pages/Movie/Detailed"));
 
   return (
     <BrowserRouter>

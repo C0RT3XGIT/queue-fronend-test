@@ -25,7 +25,7 @@ const Navbar = () => {
             Queue Movies Project
           </Typography>
           <Button color="success" variant="contained">
-            Add new
+            Add new movie
           </Button>
         </Toolbar>
       </AppBar>
