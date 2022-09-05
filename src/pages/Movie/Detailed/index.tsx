@@ -16,10 +16,14 @@ const MovieDetailed = () => {
   const [movieDetails, setMovieDetails] = useState<IMovieDetailed>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleUpdateMovieDetails = (data: IMovie) => {
+  const handleUpdateMovieDetails = (movieDetails: IMovie) => {
     setLoading(true);
-    updateMovieDetails(id, data)
+    updateMovieDetails(id, movieDetails)
       .then(() => {
+        setMovieDetails((prevState) => ({
+          ...prevState,
+          ...movieDetails,
+        }));
         alert("Movie updated !");
       })
       .finally(() => setLoading(false));
@@ -52,12 +56,14 @@ const MovieDetailed = () => {
             <Typography sx={{ mb: 1.5 }} color="text.secondary">
               Release year: {movieDetails?.release_year}
             </Typography>
-            <Typography variant="subtitle1" component="div">
-              Directed by:{" "}
-              {movieDetails?.director.first_name +
-                " " +
-                movieDetails?.director.last_name}
-            </Typography>
+            {movieDetails?.director && (
+              <Typography variant="subtitle1" component="div">
+                Directed by:{" "}
+                {movieDetails?.director.first_name +
+                  " " +
+                  movieDetails?.director.last_name}
+              </Typography>
+            )}
           </CardContent>
         </Card>
       </Grid>

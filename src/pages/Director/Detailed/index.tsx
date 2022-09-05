@@ -15,10 +15,14 @@ const DirectorDetailed = () => {
   const [directorDetails, setDirectorDetails] = useState<IDirector>(null);
   const [loading, setLoading] = useState(false);
 
-  const handleUpdateDirectorDetails = (data: IDirector) => {
+  const handleUpdateDirectorDetails = (directorData: IDirector) => {
     setLoading(true);
-    updateDirectorDetails(id, data)
+    updateDirectorDetails(id, directorData)
       .then(() => {
+        setDirectorDetails((prevState) => ({
+          ...prevState,
+          ...directorData,
+        }));
         alert("Director details updated !");
       })
       .finally(() => setLoading(false));

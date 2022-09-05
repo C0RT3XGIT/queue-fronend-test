@@ -17,7 +17,7 @@ export const getMovieDetails = (id: string) => {
 
 export const updateMovieDetails = (id: string, payload: IMovie) => {
   return request({
-    url: `/movies/${id}`,
+    url: `/movie/${id}`,
     method: "put",
     data: payload,
   });
