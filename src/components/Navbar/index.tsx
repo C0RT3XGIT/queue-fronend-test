@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -25,7 +25,9 @@ const Navbar = () => {
             Queue Movies Project
           </Typography>
           <Button color="success" variant="contained">
-            Add new movie
+            <Link to="/movies/create" style={{ textDecoration: "none" }}>
+              Add new movie
+            </Link>
           </Button>
         </Toolbar>
       </AppBar>

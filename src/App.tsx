@@ -7,17 +7,21 @@ function App() {
   const Error = lazy(() => import("./pages/Error"));
   const Movies = lazy(() => import("./pages/Movies"));
   const MovieDetailed = lazy(() => import("./pages/Movie/Detailed"));
+  const MovieCreate = lazy(() => import("./pages/Movie/Create"));
 
   return (
     <BrowserRouter>
       <Suspense fallback={<SpinnerBackdrop />}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route path="/" element={<Navigate to="/movies" />} />
+            <Route index element={<Navigate to="/movies" />} />
             <Route path="*" element={<Navigate to="/movies" />} />
-            <Route path="movies" element={<Movies />} />
-            <Route path="movies/:id" element={<MovieDetailed />} />
             <Route path="error" element={<Error />} />
+          </Route>
+          <Route path="movies" element={<Layout />}>
+            <Route index element={<Movies />} />
+            <Route path=":id" element={<MovieDetailed />} />
+            <Route path="create" element={<MovieCreate />} />
           </Route>
         </Routes>
       </Suspense>
