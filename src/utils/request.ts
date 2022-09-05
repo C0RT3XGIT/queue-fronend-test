@@ -24,7 +24,7 @@ service.interceptors.response.use(
   (error: AxiosError) => {
     history.push("/error");
     // eslint-disable-next-line no-restricted-globals
-    location.reload();
+    // location.reload();
     return Promise.reject(error);
   }
 );

@@ -17,7 +17,7 @@ const MovieItem = ({ movie, count }: IMovieItemProps) => {
   const navigate = useNavigate();
 
   const handleDetailsClick = (id: string) => {
-    navigate(id);
+    navigate(`/movies/${id}`);
   };
 
   return (

@@ -13,6 +13,7 @@ function App() {
       <Suspense fallback={<SpinnerBackdrop />}>
         <Routes>
           <Route path="/" element={<Layout />}>
+            <Route path="/" element={<Navigate to="/movies" />} />
             <Route path="*" element={<Navigate to="/movies" />} />
             <Route path="movies" element={<Movies />} />
             <Route path="movies/:id" element={<MovieDetailed />} />

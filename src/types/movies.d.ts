@@ -4,7 +4,7 @@ interface IDirector {
 }
 
 export interface IMovie {
-  _id: string;
+  _id?: string;
   name: string;
   release_year: number;
 }
