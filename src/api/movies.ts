@@ -1,5 +1,5 @@
 import request from "utils/request";
-import { IMovie } from "types/movies";
+import { IMovie, IMovieCreate } from "types/movies";
 
 export const getMovies = () => {
   return request({
@@ -15,7 +15,7 @@ export const getMovieDetails = (id: string) => {
   });
 };
 
-export const updateMovieDetails = (id: string, payload: IMovie) => {
+export const updateMovieDetails = (id: string, payload: IMovieCreate) => {
   return request({
     url: `/movie/${id}`,
     method: "put",
@@ -23,7 +23,7 @@ export const updateMovieDetails = (id: string, payload: IMovie) => {
   });
 };
 
-export const createMovie = (payload: IMovie) => {
+export const createMovie = (payload: IMovieCreate) => {
   return request({
     url: "/movie",
     method: "post",

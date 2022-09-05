@@ -1,6 +1,6 @@
 import MovieActionForm from "components/MovieActionForm";
 import Box from "@mui/material/Box";
-import { IMovie } from "types/movies";
+import { IMovieCreate } from "types/movies";
 import { createMovie } from "api/movies";
 import SpinnerBackdrop from "components/SpinnerBackdrop";
 import { useState } from "react";
@@ -8,7 +8,7 @@ import { useState } from "react";
 const MovieCreate = () => {
   const [loading, setLoading] = useState(false);
 
-  const handleMovieCreate = (movieDetails: IMovie) => {
+  const handleMovieCreate = (movieDetails: IMovieCreate) => {
     setLoading(true);
     createMovie(movieDetails)
       .then(() => {

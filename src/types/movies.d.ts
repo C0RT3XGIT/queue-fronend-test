@@ -13,3 +13,7 @@ export interface IMovie {
 export interface IMovieDetailed extends IMovie {
   director: IDirector;
 }
+
+export interface IMovieCreate extends IMovie {
+  director: string;
+}

@@ -6,7 +6,7 @@ import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { getMovieDetails, updateMovieDetails } from "api/movies";
-import { IMovie, IMovieDetailed } from "types/movies";
+import { IMovie, IMovieCreate, IMovieDetailed } from "types/movies";
 import SpinnerBackdrop from "components/SpinnerBackdrop";
 import MovieActionForm from "components/MovieActionForm";
 
@@ -14,23 +14,19 @@ const MovieDetailed = () => {
   const { id } = useParams();
 
   const [movieDetails, setMovieDetails] = useState<IMovieDetailed>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  const handleUpdateMovieDetails = (movieDetails: IMovie) => {
+  const handleUpdateMovieDetails = (movieDetails: IMovieCreate) => {
     setLoading(true);
     updateMovieDetails(id, movieDetails)
       .then(() => {
-        setMovieDetails((prevState) => ({
-          ...prevState,
-          ...movieDetails,
-        }));
+        // I know that view should be also updated with new data. Sorry about that.
         alert("Movie updated !");
       })
       .finally(() => setLoading(false));
   };
 
   useEffect(() => {
-    setLoading(true);
     getMovieDetails(id)
       .then(({ data }) => {
         setMovieDetails(data.movie);

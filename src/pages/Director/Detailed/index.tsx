@@ -13,7 +13,7 @@ const DirectorDetailed = () => {
   const { id } = useParams();
 
   const [directorDetails, setDirectorDetails] = useState<IDirector>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const handleUpdateDirectorDetails = (directorData: IDirector) => {
     setLoading(true);
@@ -29,7 +29,6 @@ const DirectorDetailed = () => {
   };
 
   useEffect(() => {
-    setLoading(true);
     getDirectorDetails(id)
       .then(({ data }) => {
         setDirectorDetails(data.director);
